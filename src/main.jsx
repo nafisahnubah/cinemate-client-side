@@ -10,6 +10,9 @@ import AddMovie from './Components/AddMovie';
 import UpdateMovie from './Components/UpdateMovie';
 import AllMovies from './Components/AllMovies';
 import MovieDetails from './Components/MovieDetails';
+import SignIn from './Components/SignIn';
+import SignUp from './Components/SignUp';
+import AuthProvider from './providers/AuthProvider';
 
 const router = createBrowserRouter([
   {
@@ -34,11 +37,21 @@ const router = createBrowserRouter([
     path: "/updateMovie/:id",
     element: <UpdateMovie></UpdateMovie>,
     loader: ({params}) => fetch(`http://localhost:5000/movie/${params.id}`),
-  }
+  },
+  {
+    path: "/signin",
+    element: <SignIn></SignIn>,
+  },
+  {
+    path: "/signup",
+    element: <SignUp></SignUp>,
+  },
 ]);
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <AuthProvider>
+      <RouterProvider router={router} />
+    </AuthProvider>
   </StrictMode>,
 )

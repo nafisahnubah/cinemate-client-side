@@ -1,4 +1,4 @@
-import { Link, useLoaderData } from "react-router-dom";
+import { Link, useLoaderData, useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import { MdDelete } from "react-icons/md";
@@ -7,6 +7,7 @@ import Swal from "sweetalert2";
 
 const MovieDetails = () => {
     const movie = useLoaderData();
+    const navigate = useNavigate();
 
     const {title, genre, poster, duration, year, rating, summary} = movie;
     const id = movie._id;
@@ -33,6 +34,7 @@ const MovieDetails = () => {
                         text: "This movie has been deleted.",
                         icon: "success"
                     });
+                    navigate("/allMovies");
                 }
               })
             }

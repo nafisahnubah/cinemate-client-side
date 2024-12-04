@@ -62,6 +62,7 @@ const AddMovie = () => {
                         <option>Reality</option>
                         <option>Documentary</option>
                         <option>Mystery</option>
+                        <option>Horror</option>
                     </select>
                 </div>
                 <div className="flex gap-4">

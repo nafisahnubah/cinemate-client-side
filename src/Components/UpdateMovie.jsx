@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 
 const UpdateMovie = () => {
     const movie = useLoaderData();
+
     const {_id, title, genre, poster, duration, year, rating, summary} = movie;
 
     const handleSubmit = (e) => {
@@ -31,7 +32,7 @@ const UpdateMovie = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data)
-            if(data.modifiedCount){
+            if(data.modifiedCount>0){
                 Swal.fire({
                     title: 'Success!',
                     text: 'Movie updated successfully',

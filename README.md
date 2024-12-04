@@ -6,3 +6,4 @@ npm i daisyui
 npm i react-simple-star-rating
 npm install sweetalert2
 npm install react-icons --save
+npm install firebase
