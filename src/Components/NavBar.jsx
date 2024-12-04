@@ -12,7 +12,7 @@ const NavBar = () => {
                     <li><NavLink className="btn rounded-md bg-teal-700 border-none text-white">Home</NavLink></li>
                     <li><NavLink className="btn rounded-md bg-teal-700 border-none text-white">All Movies</NavLink></li>
                     <li><NavLink className="btn rounded-md bg-teal-700 border-none text-white">Add Movie</NavLink></li>
-                    <li><NavLink className="btn rounded-md bg-teal-700 border-none text-white">My Movies</NavLink></li>
+                    <li><NavLink className="btn rounded-md bg-teal-700 border-none text-white">My Favourites</NavLink></li>
                     <li><NavLink className="btn rounded-md bg-teal-700 border-none text-white">Our Policies</NavLink></li>
                 </ul>
             </div>

@@ -5,3 +5,4 @@ npm install -D tailwindcss postcss autoprefixer
 npm i daisyui
 npm i react-simple-star-rating
 npm install sweetalert2
+npm install react-icons --save

@@ -6,7 +6,7 @@ const AddMovie = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const form = event.target;
+        const form = e.target;
         const title = form.title.value;
         const genre = form.genre.value;
         const poster = form.poster.value;
@@ -35,7 +35,7 @@ const AddMovie = () => {
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 })
-                
+
             }
         })
     };

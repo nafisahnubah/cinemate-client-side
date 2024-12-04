@@ -9,11 +9,16 @@ import App from './App';
 import AddMovie from './Components/AddMovie';
 import UpdateMovie from './Components/UpdateMovie';
 import AllMovies from './Components/AllMovies';
+import MovieDetails from './Components/MovieDetails';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>
+  },
+  {
+    path: "/movie/:id",
+    element: <MovieDetails></MovieDetails>,
   },
   {
     path: "/allMovies",
