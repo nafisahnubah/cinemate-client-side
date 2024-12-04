@@ -35,6 +35,7 @@ const AddMovie = () => {
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 })
+                
             }
         })
     };
@@ -110,7 +111,7 @@ const AddMovie = () => {
                         </div>
                     </div>
                 </div>
-                <textarea name="summary" className="w-full textarea textarea-bordered" placeholder="Summary"></textarea>
+                <textarea name="summary" className="w-full textarea-lg textarea text-base textarea-bordered" placeholder="Summary"></textarea>
                 <input className="my-4 btn rounded-md bg-teal-700 border-none text-white w-full" type="submit" value="Add Movie"/>
             </form>
             <Footer></Footer>

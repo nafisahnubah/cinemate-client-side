@@ -8,11 +8,17 @@ import './index.css';
 import App from './App';
 import AddMovie from './Components/AddMovie';
 import UpdateMovie from './Components/UpdateMovie';
+import AllMovies from './Components/AllMovies';
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App></App>,
+    element: <App></App>
+  },
+  {
+    path: "/allMovies",
+    element: <AllMovies></AllMovies>,
+    loader: () => fetch('http://localhost:5000/addMovie'),
   },
   {
     path: "/addMovie",
