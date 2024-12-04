@@ -1,38 +1,43 @@
-import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import { MdDelete } from "react-icons/md";
 import { FaEdit, FaHeart } from "react-icons/fa";
+import Swal from "sweetalert2";
 
 const MovieDetails = () => {
-    const { id } = useParams();
-    console.log("Movie ID:", id);
+    const movie = useLoaderData();
 
-    const [movie, setMovie] = useState(null);
+    const {title, genre, poster, duration, year, rating, summary} = movie;
+    const id = movie._id;
 
-    useEffect(() => {
-        fetch('http://localhost:5000/addMovie')
-          .then((res) => res.json())
-          .then((data) => {
-            const selectedMovie = data.find((el) => el._id === id);
-            setMovie(selectedMovie);
-          })
-          .catch((error) => console.error('Error fetching movie data:', error));
-    }, [id]);
-
-    if (!movie) {
-        return (
-            <div className="flex justify-center my-28">
-                <span className="loading loading-bars loading-xs"></span>
-                <span className="loading loading-bars loading-sm"></span>
-                <span className="loading loading-bars loading-md"></span>
-                <span className="loading loading-bars loading-lg"></span>
-            </div>
-        )
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then((result) => {
+            if (result.isConfirmed) {
+              fetch(`http://localhost:5000/movie/${id}`, {
+                method: 'DELETE'
+              })
+              .then(res => res.json())
+              .then(data => {
+                if(data.deletedCount > 0){
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: "This movie has been deleted.",
+                        icon: "success"
+                    });
+                }
+              })
+            }
+          });
     }
-
-    const {_id, title, genre, poster, duration, year, rating, summary} = movie;
 
     return (
         <div className='bg-teal-100'>
@@ -54,9 +59,9 @@ const MovieDetails = () => {
                         <p><span className="font-bold">Summary: </span>{summary}</p>
                     </div>
                     <div className="card-actions justify-between flex mt-4">
-                    <button className="btn rounded-md bg-teal-700 border-none text-white w-1/4 text-2xl"><MdDelete/></button>
-                    <button className="btn rounded-md bg-teal-700 border-none text-white w-1/4 text-2xl"><FaEdit/></button>
-                    <button className="btn rounded-md bg-teal-700 border-none text-white w-1/4 text-2xl"><FaHeart/></button>
+                    <button onClick={() => handleDelete(id)} className="btn rounded-md bg-teal-700 border-none text-white w-1/4 text-2xl"><MdDelete/></button>
+                    <Link to={`/updateMovie/${id}`} className="w-1/4"><button className="btn rounded-md bg-teal-700 border-none text-white w-full text-2xl"><FaEdit/></button></Link>
+                    {/* <button onClick={handleFavourite} className="btn rounded-md bg-teal-700 border-none text-white w-1/4 text-2xl"><FaHeart/></button> */}
                     </div>
                 </div>
             </div>

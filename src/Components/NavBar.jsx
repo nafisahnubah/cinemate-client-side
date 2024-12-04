@@ -9,9 +9,9 @@ const NavBar = () => {
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className="menu menu-horizontal px-1 flex gap-4">
-                    <li><NavLink className="btn rounded-md bg-teal-700 border-none text-white">Home</NavLink></li>
-                    <li><NavLink className="btn rounded-md bg-teal-700 border-none text-white">All Movies</NavLink></li>
-                    <li><NavLink className="btn rounded-md bg-teal-700 border-none text-white">Add Movie</NavLink></li>
+                    <li><NavLink to={'/'} className="btn rounded-md bg-teal-700 border-none text-white">Home</NavLink></li>
+                    <li><NavLink to={'/allMovies'} className="btn rounded-md bg-teal-700 border-none text-white">All Movies</NavLink></li>
+                    <li><NavLink to={'/addMovie'} className="btn rounded-md bg-teal-700 border-none text-white">Add Movie</NavLink></li>
                     <li><NavLink className="btn rounded-md bg-teal-700 border-none text-white">My Favourites</NavLink></li>
                     <li><NavLink className="btn rounded-md bg-teal-700 border-none text-white">Our Policies</NavLink></li>
                 </ul>
