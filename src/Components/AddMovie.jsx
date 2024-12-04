@@ -1,5 +1,6 @@
 import Footer from "./Footer";
 import NavBar from "./NavBar";
+import Swal from 'sweetalert2';
 
 const AddMovie = () => {
 
@@ -14,20 +15,42 @@ const AddMovie = () => {
         const rating = form.rating.value;
         const summary = form.summary.value;
         console.log(title, genre, poster, duration, year, rating, summary)
+
+        const newMovie = {title, genre, poster, duration, year, rating, summary};
+
+        fetch('http://localhost:5000/addMovie', {
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify(newMovie)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Movie added successfully',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+            }
+        })
     };
 
     return (
-        <div>
+        <div className="bg-teal-50">
             <NavBar></NavBar>
-            <h1>Add</h1>
-            <form onSubmit={handleSubmit}>
-                <div className="flex gap-4">
-                    <div>
+            <h1 className="underline decoration-double decoration-teal-700 md:px-96 my-6 text-center font-extrabold text-4xl">Add a Movie</h1>
+            <form className="md:px-96" onSubmit={handleSubmit}>
+                <div className="grid gap-4 my-4">
+                    <div className="w-full">
                         <div>
-                        <input name="title" className="input input-bordered join-item" placeholder="Title" />
+                        <input name="title" className="w-full input input-bordered" placeholder="Title" />
                         </div>
                     </div>
-                    <select name="genre" className="select select-bordered join-item">
+                    <select name="genre" className="select select-bordered w-full">
                         <option disabled selected>Genre</option>
                         <option>Sci-fi</option>
                         <option>Drama</option>
@@ -41,19 +64,19 @@ const AddMovie = () => {
                     </select>
                 </div>
                 <div className="flex gap-4">
-                    <div>
+                    <div className="w-full">
                         <div>
-                        <input name="poster" className="input input-bordered join-item" placeholder="Poster URL" />
+                        <input name="poster" className="w-full input input-bordered" placeholder="Poster URL" />
                         </div>
                     </div>
-                    <div>
+                    <div className="w-full">
                         <div>
-                        <input name="duration" className="input input-bordered join-item" placeholder="Duration (minutes)" />
+                        <input name="duration" className="w-full input input-bordered" placeholder="Duration (minutes)" />
                         </div>
                     </div>
                 </div>
-                <div className="flex gap-4">
-                    <select name="year" className="select select-bordered join-item">
+                <div className="grid gap-4 my-4">
+                    <select name="year" className="select select-bordered">
                         <option disabled selected>Released Year</option>
                         <option>2024</option>
                         <option>2023</option>
@@ -81,14 +104,14 @@ const AddMovie = () => {
                         <option>2001</option>
                         <option>2000</option>
                     </select>
-                    <div>
+                    <div className="w-full">
                         <div>
-                        <input name="rating" className="input input-bordered join-item" placeholder="Rating (1-5)" />
+                        <input name="rating" className="w-full input input-bordered" placeholder="Rating (1-5)" />
                         </div>
                     </div>
                 </div>
-                <textarea name="summary" className="textarea textarea-bordered" placeholder="Summary"></textarea>
-                <input className="btn" type="submit" value="Add Movie"/>
+                <textarea name="summary" className="w-full textarea textarea-bordered" placeholder="Summary"></textarea>
+                <input className="my-4 btn rounded-md bg-teal-700 border-none text-white w-full" type="submit" value="Add Movie"/>
             </form>
             <Footer></Footer>
         </div>
