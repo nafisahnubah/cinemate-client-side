@@ -1,4 +1,4 @@
-import { Link, useLoaderData, useNavigate } from "react-router-dom";
+import { Link, NavLink, useLoaderData, useNavigate } from "react-router-dom";
 import NavBar from "./NavBar";
 import Footer from "./Footer";
 import { MdDelete } from "react-icons/md";
@@ -48,7 +48,7 @@ const MovieDetails = () => {
     return (
         <div className='bg-teal-100'>
             <NavBar></NavBar>
-            <div className="card card-side bg-teal-50 shadow-xl md:grid-cols-2 grid md:my-20 my-5 md:w-2/3 md:mx-auto mx-5">
+            <div className="card card-side bg-teal-50 shadow-xl md:grid-cols-2 grid md:mt-20 my-5 md:w-2/3 md:mx-auto mx-5">
                 <figure>
                     <img
                     className="w-1/2 p-4 m-0"
@@ -70,6 +70,9 @@ const MovieDetails = () => {
                     <button onClick={handleFavourite} className="btn rounded-md bg-teal-700 border-none text-white w-1/4 text-2xl"><FaHeart/></button>
                     </div>
                 </div>
+            </div>
+            <div className='md:mb-20 md:w-2/3 md:mx-auto mx-5'>
+                <NavLink to={'/allMovies'} className="btn rounded-md bg-teal-700 border-none text-white mb-4 w-full">See All Movies</NavLink>
             </div>
             <Footer></Footer>
         </div>
