@@ -15,6 +15,7 @@ import SignUp from './Components/SignUp';
 import AuthProvider from './providers/AuthProvider';
 import PrivateRoute from './PrivateRoute';
 import Favourites from './Components/Favourites';
+import Policies from './Components/Policies';
 
 const router = createBrowserRouter([
   {
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       </PrivateRoute>
     ),
     loader: ({params}) => fetch(`http://localhost:5000/movie/${params.id}`),
+  },
+  {
+    path: "/policies",
+    element: <Policies></Policies>
   },
   {
     path: "/signin",

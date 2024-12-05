@@ -28,7 +28,7 @@ const NavBar = () => {
                     <li><NavLink to={'/allMovies'} className="btn rounded-md bg-teal-700 border-none text-white">All Movies</NavLink></li>
                     <li><NavLink to={'/addMovie'} className="btn rounded-md bg-teal-700 border-none text-white">Add Movie</NavLink></li>
                     <li><NavLink to={'/favourites'} className="btn rounded-md bg-teal-700 border-none text-white">My Favourites</NavLink></li>
-                    <li><NavLink className="btn rounded-md bg-teal-700 border-none text-white">Our Policies</NavLink></li>
+                    <li><NavLink to={'/policies'} className="btn rounded-md bg-teal-700 border-none text-white">Our Policies</NavLink></li>
                 </ul>
             </div>
             <div className="navbar-end flex gap-4">

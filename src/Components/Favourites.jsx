@@ -3,9 +3,9 @@ import NavBar from "./NavBar";
 
 const Favourites = () => {
     return (
-        <div>
+        <div className='bg-teal-100'>
             <NavBar></NavBar>
-            
+
             <Footer></Footer>
         </div>
     );
