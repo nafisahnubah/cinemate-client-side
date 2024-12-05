@@ -1,19 +1,64 @@
+import { useContext } from "react";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import Swal from 'sweetalert2';
+import { AuthContext } from "../providers/AuthProvider";
 
 const AddMovie = () => {
+
+    const {error, setError} = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
         const title = form.title.value;
+
+        if(title.length<2){
+            setError("Title must have at least 2 characters.");
+            return;
+        }
+
         const genre = form.genre.value;
+
+        if(genre === "Genre"){
+            setError("Genre is not selected.");
+            return;
+        }
+
         const poster = form.poster.value;
+
+        if(!poster.startsWith("http")){
+            setError("Poster URL must be a link.");
+            return;
+        }
+
         const duration = form.duration.value;
+
+        if(duration<=60){
+            setError("Duration must be greater than 60 minutes.");
+            return;
+        }
+
         const year = form.year.value;
+
+        if(year === "Released Year"){
+            setError("Released Year is not selected.");
+            return;
+        }
+
         const rating = form.rating.value;
+
+        if(rating<0 || rating>5){
+            setError("Rating must be between 0 and 5.");
+            return;
+        }
+
         const summary = form.summary.value;
+
+        if(summary.length<10){
+            setError("Summary must be at least 10 characters.");
+            return;
+        }
         console.log(title, genre, poster, duration, year, rating, summary)
 
         const newMovie = {title, genre, poster, duration, year, rating, summary};
@@ -35,7 +80,8 @@ const AddMovie = () => {
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 })
-
+                form.reset();
+                setError('');
             }
         })
     };
@@ -48,10 +94,10 @@ const AddMovie = () => {
                 <div className="grid gap-4 my-4">
                     <div className="w-full">
                         <div>
-                        <input name="title" className="w-full input input-bordered" placeholder="Title" />
+                        <input name="title" required className="w-full input input-bordered" placeholder="Title" />
                         </div>
                     </div>
-                    <select name="genre" className="select select-bordered w-full">
+                    <select name="genre" required className="select select-bordered w-full">
                         <option disabled selected>Genre</option>
                         <option>Sci-fi</option>
                         <option>Drama</option>
@@ -73,12 +119,12 @@ const AddMovie = () => {
                     </div>
                     <div className="w-full">
                         <div>
-                        <input name="duration" className="w-full input input-bordered" placeholder="Duration (minutes)" />
+                        <input name="duration" required className="w-full input input-bordered" placeholder="Duration (minutes)" />
                         </div>
                     </div>
                 </div>
                 <div className="grid gap-4 my-4">
-                    <select name="year" className="select select-bordered">
+                    <select name="year" required className="select select-bordered">
                         <option disabled selected>Released Year</option>
                         <option>2024</option>
                         <option>2023</option>
@@ -108,11 +154,15 @@ const AddMovie = () => {
                     </select>
                     <div className="w-full">
                         <div>
-                        <input name="rating" className="w-full input input-bordered" placeholder="Rating (1-5)" />
+                        <input name="rating" required className="w-full input input-bordered" placeholder="Rating (1-5)" />
                         </div>
                     </div>
                 </div>
-                <textarea name="summary" className="w-full textarea-lg textarea text-base textarea-bordered" placeholder="Summary"></textarea>
+                <textarea name="summary" required className="w-full textarea-lg textarea text-base textarea-bordered" placeholder="Summary"></textarea>
+                {
+                    error && 
+                    <p className="text-red-400">{error}</p>
+                }
                 <input className="my-4 btn rounded-md bg-teal-700 border-none text-white w-full" type="submit" value="Add Movie"/>
             </form>
             <Footer></Footer>
