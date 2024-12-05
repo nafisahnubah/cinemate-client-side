@@ -7,7 +7,7 @@ const Policies = () => {
             <NavBar></NavBar>
             <h1 className='underline decoration-double decoration-teal-700 md:px-96 my-6 text-center font-extrabold text-4xl'>Our Policies</h1>
             <p className="md:mx-12 text-center my-4 text-lg">Welcome to CineMate! We aim to provide a seamless and enjoyable experience for movie enthusiasts. Our policies ensure transparency, security, and ease of use for everyone. By using our platform, you agree to the following policies:</p>
-            <div className="card bg-teal-50 my-4 md:mx-12 rounded-sm">
+            <div className="card bg-teal-50 my-4 md:mx-12 mx-4 rounded-sm">
                 <div className="card-body">
                     <h2 className="card-title text-2xl">Exploring Movies</h2>
                     <ul className="text-lg">
@@ -16,7 +16,7 @@ const Policies = () => {
                     </ul>
                 </div>
             </div>
-            <div className="card bg-teal-50 my-4 md:mx-12 rounded-sm">
+            <div className="card bg-teal-50 my-4 md:mx-12 mx-4 rounded-sm">
                 <div className="card-body">
                     <h2 className="card-title text-2xl">Viewing Movie Details</h2>
                     <ul className="text-lg">
@@ -25,7 +25,7 @@ const Policies = () => {
                     </ul>
                 </div>
             </div>
-            <div className="card bg-teal-50 my-4 md:mx-12 rounded-sm">
+            <div className="card bg-teal-50 my-4 md:mx-12 mx-4 rounded-sm">
                 <div className="card-body">
                     <h2 className="card-title text-2xl">Adding Movies</h2>
                     <ul className="text-lg">
@@ -35,7 +35,7 @@ const Policies = () => {
                     </ul>
                 </div>
             </div>
-            <div className="card bg-teal-50 my-4 md:mx-12 rounded-sm">
+            <div className="card bg-teal-50 my-4 md:mx-12 mx-4 rounded-sm">
                 <div className="card-body">
                     <h2 className="card-title text-2xl">Managing Favorites</h2>
                     <ul className="text-lg">
@@ -45,7 +45,7 @@ const Policies = () => {
                     </ul>
                 </div>
             </div>
-            <div className="card bg-teal-50 my-4 md:mx-12 rounded-sm">
+            <div className="card bg-teal-50 my-4 md:mx-12 mx-4 rounded-sm">
                 <div className="card-body">
                     <h2 className="card-title text-2xl">Data Privacy</h2>
                     <ul className="text-lg">
@@ -54,7 +54,7 @@ const Policies = () => {
                     </ul>
                 </div>
             </div>
-            <div className="card bg-teal-50 my-4 md:mx-12 rounded-sm">
+            <div className="card bg-teal-50 my-4 md:mx-12 mx-4 rounded-sm">
                 <div className="card-body">
                     <h2 className="card-title text-2xl">Updates to Policies</h2>
                     <p className="text-lg">We may update these policies periodically to enhance functionality and ensure compliance with regulations. Users will be notified of significant changes.</p>

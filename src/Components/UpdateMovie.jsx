@@ -93,7 +93,7 @@ const UpdateMovie = () => {
             <NavBar></NavBar>
             <h1 className="underline decoration-double decoration-teal-700 md:px-96 my-6 text-center font-extrabold text-4xl">Edit this Movie</h1>
             <img src={poster} alt="Poster" className="mx-auto w-32"/>
-            <form className="md:px-96" onSubmit={handleSubmit}>
+            <form className="md:px-96 px-4" onSubmit={handleSubmit}>
                 <div className="grid gap-4 my-4">
                     <div className="w-full">
                         <div>
