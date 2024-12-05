@@ -2,22 +2,66 @@ import { useLoaderData } from "react-router-dom";
 import Footer from "./Footer";
 import NavBar from "./NavBar";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const UpdateMovie = () => {
     const movie = useLoaderData();
 
     const {_id, title, genre, poster, duration, year, rating, summary} = movie;
+    const {error, setError} = useContext(AuthContext);
 
     const handleSubmit = (e) => {
         e.preventDefault();
         const form = e.target;
         const title = form.title.value;
+
+        if(title.length<2){
+            setError("Title must have at least 2 characters.");
+            return;
+        }
+
         const genre = form.genre.value;
+
+        if(genre === "Genre"){
+            setError("Genre is not selected.");
+            return;
+        }
+
         const poster = form.poster.value;
+
+        if(!poster.startsWith("http")){
+            setError("Poster URL must be a link.");
+            return;
+        }
+
         const duration = form.duration.value;
+
+        if(duration<=60){
+            setError("Duration must be greater than 60 minutes.");
+            return;
+        }
+
         const year = form.year.value;
+
+        if(year === "Released Year"){
+            setError("Released Year is not selected.");
+            return;
+        }
+
         const rating = form.rating.value;
+
+        if(rating<0 || rating>5){
+            setError("Rating must be between 0 and 5.");
+            return;
+        }
+
         const summary = form.summary.value;
+
+        if(summary.length<10){
+            setError("Summary must be at least 10 characters.");
+            return;
+        }
         console.log(title, genre, poster, duration, year, rating, summary)
 
         const updatedMovie = {title, genre, poster, duration, year, rating, summary};
@@ -39,7 +83,7 @@ const UpdateMovie = () => {
                     icon: 'success',
                     confirmButtonText: 'Cool'
                 })
-
+                setError('');
             }
         })
     };
@@ -117,6 +161,10 @@ const UpdateMovie = () => {
                     </div>
                 </div>
                 <textarea name="summary" className="w-full textarea-lg textarea text-base textarea-bordered" defaultValue={summary} placeholder="Summary"></textarea>
+                {
+                    error && 
+                    <p className="text-red-400">{error}</p>
+                }
                 <input className="my-4 btn rounded-md bg-teal-700 border-none text-white w-full" type="submit" value="Update Movie"/>
             </form>
             <Footer></Footer>
