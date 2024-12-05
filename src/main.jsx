@@ -13,6 +13,8 @@ import MovieDetails from './Components/MovieDetails';
 import SignIn from './Components/SignIn';
 import SignUp from './Components/SignUp';
 import AuthProvider from './providers/AuthProvider';
+import PrivateRoute from './PrivateRoute';
+import Favourites from './Components/Favourites';
 
 const router = createBrowserRouter([
   {
@@ -21,7 +23,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/movie/:id",
-    element: <MovieDetails></MovieDetails>,
+    element: (
+      <PrivateRoute>
+        <MovieDetails></MovieDetails>
+      </PrivateRoute>
+    ),
     loader: ({params}) => fetch(`http://localhost:5000/movie/${params.id}`),
   },
   {
@@ -31,11 +37,27 @@ const router = createBrowserRouter([
   },
   {
     path: "/addMovie",
-    element: <AddMovie></AddMovie>,
+    element: (
+      <PrivateRoute>
+        <AddMovie></AddMovie>
+      </PrivateRoute>
+    ),
+  },
+  {
+    path: "/favourites",
+    element: (
+      <PrivateRoute>
+        <Favourites></Favourites>
+      </PrivateRoute>
+    ),
   },
   {
     path: "/updateMovie/:id",
-    element: <UpdateMovie></UpdateMovie>,
+    element: (
+      <PrivateRoute>
+        <UpdateMovie></UpdateMovie>
+      </PrivateRoute>
+    ),
     loader: ({params}) => fetch(`http://localhost:5000/movie/${params.id}`),
   },
   {

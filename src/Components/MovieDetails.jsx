@@ -12,6 +12,10 @@ const MovieDetails = () => {
     const {title, genre, poster, duration, year, rating, summary} = movie;
     const id = movie._id;
 
+    const handleFavourite = (movie) => {
+        
+    }
+
     const handleDelete = (id) => {
         Swal.fire({
             title: "Are you sure?",
@@ -63,7 +67,7 @@ const MovieDetails = () => {
                     <div className="card-actions justify-between flex mt-4">
                     <button onClick={() => handleDelete(id)} className="btn rounded-md bg-teal-700 border-none text-white w-1/4 text-2xl"><MdDelete/></button>
                     <Link to={`/updateMovie/${id}`} className="w-1/4"><button className="btn rounded-md bg-teal-700 border-none text-white w-full text-2xl"><FaEdit/></button></Link>
-                    {/* <button onClick={handleFavourite} className="btn rounded-md bg-teal-700 border-none text-white w-1/4 text-2xl"><FaHeart/></button> */}
+                    <button onClick={handleFavourite} className="btn rounded-md bg-teal-700 border-none text-white w-1/4 text-2xl"><FaHeart/></button>
                     </div>
                 </div>
             </div>
