@@ -4,16 +4,36 @@ import Footer from "./Footer";
 import { MdDelete } from "react-icons/md";
 import { FaEdit, FaHeart } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { useContext } from "react";
+import { AuthContext } from "../providers/AuthProvider";
 
 const MovieDetails = () => {
     const movie = useLoaderData();
     const navigate = useNavigate();
+    const {user} = useContext(AuthContext);
 
     const {title, genre, poster, duration, year, rating, summary} = movie;
     const id = movie._id;
 
     const handleFavourite = (movie) => {
-        
+        fetch(`http://localhost:5000/favourites/${id}`, {
+            method: 'POST',
+            headers: {
+                'content-type' : 'application/json'
+            },
+            body: JSON.stringify({...movie, user: user.email})
+          })
+          .then(res => res.json())
+          .then(data => {
+            if(data.insertedId){
+                Swal.fire({
+                    title: 'Success!',
+                    text: 'Movie added to Favourites',
+                    icon: 'success',
+                    confirmButtonText: 'Cool'
+                })
+            }
+          })
     }
 
     const handleDelete = (id) => {
@@ -67,7 +87,7 @@ const MovieDetails = () => {
                     <div className="card-actions justify-between flex mt-4">
                     <button onClick={() => handleDelete(id)} className="btn rounded-md bg-teal-700 border-none text-white w-1/4 text-2xl"><MdDelete/></button>
                     <Link to={`/updateMovie/${id}`} className="w-1/4"><button className="btn rounded-md bg-teal-700 border-none text-white w-full text-2xl"><FaEdit/></button></Link>
-                    <button onClick={handleFavourite} className="btn rounded-md bg-teal-700 border-none text-white w-1/4 text-2xl"><FaHeart/></button>
+                    <button onClick={() => handleFavourite(movie)} className="btn rounded-md bg-teal-700 border-none text-white w-1/4 text-2xl"><FaHeart/></button>
                     </div>
                 </div>
             </div>
