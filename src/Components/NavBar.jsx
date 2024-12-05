@@ -44,7 +44,7 @@ const NavBar = () => {
                     }
                     {
                         showName &&
-                        <p className="text-white absolute top-8">{user?.email}</p>
+                        <p className="text-white absolute top-8 right-0">{user?.email}</p>
                     }
                 </div>
             </div>

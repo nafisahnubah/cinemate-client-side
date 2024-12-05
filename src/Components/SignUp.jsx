@@ -8,40 +8,52 @@ const SignUp = () => {
 
     const {createUser, setUser, error, setError} = useContext(AuthContext);
     const navigate = useNavigate();
-    setError('');
+    
 
     const handleSignUp = (e) => {
         e.preventDefault();
         const name = e.target.name.value;
         const email = e.target.email.value;
         const password = e.target.password.value;
-        console.log(email, password)
-
-        createUser(email, password)
-        .then(result => {
-            console.log(result.user);
-            const newUser = {name, email};
-            fetch('http://localhost:5000/users', {
-                method: 'POST',
-                headers: {
-                    'content-type' : 'application/json'
-                },
-                body: JSON.stringify(newUser)
+        if (!/[A-Z]/.test(password)) {
+            setError("Password must contain at least one uppercase letter.");
+            return;
+        }
+        else if (!/[a-z]/.test(password)) {
+            setError("Password must contain at least one lowercase letter.");
+            return;
+        }
+        else if (password.length < 6) {
+            setError("Password must be at least 6 characters long.");
+            return;
+        }
+        else{
+            createUser(email, password)
+            .then(result => {
+                console.log(result.user);
+                const newUser = {name, email};
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type' : 'application/json'
+                    },
+                    body: JSON.stringify(newUser)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    if(data.insertedId){
+                        Swal.fire("Your account has been created!");
+                    }
+                    setUser(newUser);
+                    setError('');
+                    navigate('/');
+                })
             })
-            .then(res => res.json())
-            .then(data => {
-                if(data.insertedId){
-                    Swal.fire("Your account has been created!");
-                }
-                setUser(newUser);
-                setError('');
-                navigate('/');
+            .catch(error => {
+                const errorMessage = error.message;
+                setError(errorMessage);
             })
-        })
-        .catch(error => {
-            const errorMessage = error.message;
-            setError(errorMessage);
-        })
+        }
     }
 
     return (
@@ -73,7 +85,7 @@ const SignUp = () => {
                     </div>
                     {
                         error &&
-                        <p className="text-red-400">${error}</p>
+                        <p className="text-red-400">{error}</p>
                     }
                     <div className="form-control m-6">
                         <button className="btn rounded-md bg-teal-700 border-none text-white">Sign up</button>

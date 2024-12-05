@@ -7,7 +7,6 @@ const SignIn = () => {
 
     const {signInUser, setUser, error, setError} = useContext(AuthContext);
     const navigate = useNavigate();
-    setError('');
 
     const handleSignIn = (e) => {
         e.preventDefault();
@@ -58,7 +57,7 @@ const SignIn = () => {
                     </div>
                     {
                         error &&
-                        <p className="text-red-400">${error}</p>
+                        <p className="text-red-400">{error}</p>
                     }
                     <div className="form-control m-6">
                     <button className="btn rounded-md bg-teal-700 border-none text-white">Sign In</button>
