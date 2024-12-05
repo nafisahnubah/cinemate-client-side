@@ -1,20 +1,20 @@
 import { NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../providers/AuthProvider";
+import { CgProfile } from "react-icons/cg";
 
 const NavBar = () => {
-
-    let showName = false;
-
+    
+    const [showName, setShowName] = useState(false);
     const {user, signOutUser} = useContext(AuthContext);
 
     const handleMouseOverProfile = () => {
-        showName = true;
+        setShowName(true);
     }
 
     const handleMouseOutProfile = () => {
-        showName = false;
+        setShowName(false);
     }
 
     return (
@@ -35,21 +35,18 @@ const NavBar = () => {
                 {
                     user? <button onClick={signOutUser} className="btn rounded-md bg-teal-700 border-none text-white">Sign Out</button> : <NavLink to={'/signin'} className="btn rounded-md bg-teal-700 border-none text-white">Sign In</NavLink>
                 }
-                {
-                    user && 
-                    <div className="w-10">
-                        <img
-                            onMouseOver={handleMouseOverProfile}
-                            onMouseOut={handleMouseOutProfile}
-                            className="rounded-full"
-                            alt="Tailwind CSS Navbar component"
-                            src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp" />
-                    </div>
-                }
-                {
-                    showName && user &&
-                    <p>{user.name}</p>
-                }
+                <div className="relative">
+                    {
+                        user && 
+                        <div className="w-10">
+                            <CgProfile onMouseOver={handleMouseOverProfile} onMouseOut={handleMouseOutProfile} className="text-3xl text-white"/>
+                        </div>
+                    }
+                    {
+                        showName &&
+                        <p className="text-white absolute top-8">{user?.email}</p>
+                    }
+                </div>
             </div>
         </div>
     );

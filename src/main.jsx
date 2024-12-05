@@ -16,6 +16,7 @@ import AuthProvider from './providers/AuthProvider';
 import PrivateRoute from './PrivateRoute';
 import Favourites from './Components/Favourites';
 import Policies from './Components/Policies';
+import Error from './Components/Error';
 
 const router = createBrowserRouter([
   {
@@ -75,6 +76,10 @@ const router = createBrowserRouter([
     path: "/signup",
     element: <SignUp></SignUp>,
   },
+  {
+    path: "*",
+    element: <Error></Error>
+  }
 ]);
 
 createRoot(document.getElementById('root')).render(

@@ -34,7 +34,7 @@ const SignIn = () => {
             <div className="card bg-teal-50 w-full max-w-sm mx-auto shrink-0 shadow-2xl">
                 <h1 className="underline decoration-double decoration-teal-700 m-4 text-center font-extrabold text-4xl">Sign In</h1>
                 <img src={logo} className="w-1/2 mx-auto" alt="Logo" />
-                <form onSubmit={handleSignIn} className="card-body pt-0">
+                <form onSubmit={handleSignIn} className="card-body pt-0 pb-2">
                     <div className="form-control">
                     <label className="label">
                         <span className="label-text">Name</span>
@@ -60,7 +60,7 @@ const SignIn = () => {
                         error &&
                         <p className="text-red-400">${error}</p>
                     }
-                    <div className="form-control mt-6">
+                    <div className="form-control m-6">
                     <button className="btn rounded-md bg-teal-700 border-none text-white">Sign In</button>
                     </div>
                 </form>
