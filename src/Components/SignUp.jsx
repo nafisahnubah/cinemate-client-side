@@ -29,9 +29,9 @@ const SignUp = () => {
         }
         else{
             createUser(email, password)
-            .then(result => {
+            .then(() => {
                 const newUser = {name, email};
-                fetch('http://localhost:5000/users', {
+                fetch('https://cinemate-server-side.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type' : 'application/json'

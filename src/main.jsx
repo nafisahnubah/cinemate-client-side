@@ -22,7 +22,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App></App>,
-    loader: () => fetch('http://localhost:5000/addMovie'),
+    loader: () => fetch('https://cinemate-server-side.vercel.app/addMovie'),
   },
   {
     path: "/movie/:id",
@@ -31,12 +31,12 @@ const router = createBrowserRouter([
         <MovieDetails></MovieDetails>
       </PrivateRoute>
     ),
-    loader: ({params}) => fetch(`http://localhost:5000/movie/${params.id}`),
+    loader: ({params}) => fetch(`https://cinemate-server-side.vercel.app/movie/${params.id}`),
   },
   {
     path: "/allMovies",
     element: <AllMovies></AllMovies>,
-    loader: () => fetch('http://localhost:5000/addMovie'),
+    loader: () => fetch('https://cinemate-server-side.vercel.app/addMovie'),
   },
   {
     path: "/addMovie",
@@ -53,7 +53,7 @@ const router = createBrowserRouter([
         <Favourites></Favourites>
       </PrivateRoute>
     ),
-    loader: () => fetch('http://localhost:5000/favourites')
+    loader: () => fetch('https://cinemate-server-side.vercel.app/favourites')
   },
   {
     path: "/updateMovie/:id",
@@ -62,7 +62,7 @@ const router = createBrowserRouter([
         <UpdateMovie></UpdateMovie>
       </PrivateRoute>
     ),
-    loader: ({params}) => fetch(`http://localhost:5000/movie/${params.id}`),
+    loader: ({params}) => fetch(`https://cinemate-server-side.vercel.app/movie/${params.id}`),
   },
   {
     path: "/policies",

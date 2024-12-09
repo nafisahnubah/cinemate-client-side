@@ -62,7 +62,7 @@ const AddMovie = () => {
 
         const newMovie = {title, genre, poster, duration, year, rating, summary};
 
-        fetch('http://localhost:5000/addMovie', {
+        fetch('https://cinemate-server-side.vercel.app/addMovie', {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'

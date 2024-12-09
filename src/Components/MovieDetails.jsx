@@ -16,7 +16,7 @@ const MovieDetails = () => {
     const id = movie._id;
 
     const handleFavourite = (movie) => {
-        fetch(`http://localhost:5000/favourites/${id}`, {
+        fetch(`https://cinemate-server-side.vercel.app/favourites/${id}`, {
             method: 'POST',
             headers: {
                 'content-type' : 'application/json'
@@ -47,7 +47,7 @@ const MovieDetails = () => {
             confirmButtonText: "Yes, delete it!"
           }).then((result) => {
             if (result.isConfirmed) {
-              fetch(`http://localhost:5000/movie/${id}`, {
+              fetch(`https://cinemate-server-side.vercel.app/movie/${id}`, {
                 method: 'DELETE'
               })
               .then(res => res.json())
