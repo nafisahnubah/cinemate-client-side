@@ -2,10 +2,8 @@ import Swal from "sweetalert2";
 
 const FavMovieCard = (movie) => {
     const {_id, title, genre, poster, duration, year, rating} = movie.movie;
-    console.log(movie)
 
     const handleRemove = (id) => {
-        console.log(id)
         Swal.fire({
             title: "Are you sure you want to remove this movie from Favourites?",
             text: "You can Like it again later.",
@@ -21,7 +19,6 @@ const FavMovieCard = (movie) => {
               })
               .then(res => res.json())
               .then(data => {
-                console.log(data)
                 if(data.deletedCount > 0){
                     Swal.fire({
                         title: "Removed!",

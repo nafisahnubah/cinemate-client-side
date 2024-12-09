@@ -59,7 +59,6 @@ const AddMovie = () => {
             setError("Summary must be at least 10 characters.");
             return;
         }
-        console.log(title, genre, poster, duration, year, rating, summary)
 
         const newMovie = {title, genre, poster, duration, year, rating, summary};
 
@@ -72,7 +71,6 @@ const AddMovie = () => {
         })
         .then(res => res.json())
         .then(data => {
-            console.log(data)
             if(data.insertedId){
                 Swal.fire({
                     title: 'Success!',

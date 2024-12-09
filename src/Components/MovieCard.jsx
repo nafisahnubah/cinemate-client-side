@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const MovieCard = (movie) => {
     const {_id, title, genre, poster, duration, year, rating} = movie.movie;
-    console.log(movie)
+    
     return (
         <div className="card card-side bg-teal-50 shadow-xl grid-cols-2 grid">
             <figure>

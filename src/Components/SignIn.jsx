@@ -16,7 +16,6 @@ const SignIn = () => {
 
         signInUser(email, password)
         .then((userCredential) => {
-        console.log(userCredential.user);
         const user = {name, email};
         setUser(user);
         setError('');

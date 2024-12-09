@@ -30,7 +30,6 @@ const SignUp = () => {
         else{
             createUser(email, password)
             .then(result => {
-                console.log(result.user);
                 const newUser = {name, email};
                 fetch('http://localhost:5000/users', {
                     method: 'POST',
