@@ -1,4 +1,4 @@
-# CineMate - Movie Exploration Platform
+# CineMate - Movie Exploration Platform (Frontend)
 
 CineMate is a user-friendly application designed to streamline the process of exploring movies, viewing detailed information, and managing a personalized list of favorites. With its dynamic user interface and robust functionality, CineMate ensures a seamless and engaging user experience. This project represents the frontend of the Movie Exploration Platform.
 
